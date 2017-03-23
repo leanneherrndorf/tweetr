@@ -16,14 +16,23 @@ function createTweetElement(tweetData) {
 
   $tweet.append($("<p>").addClass("tweettext").text(tweetData.content.text));
   var $footer = $("<footer>");
-  $footer.append($("<time>").addClass("timeago").attr("datetime", time))
+  $footer.append($("<time>").addClass("timeago").attr("datetime", time));
   $footer.append($("<div>").addClass("social")
           .append($("<i>").addClass("fa fa-flag").attr('aria-hidden', "true"))
           .append($("<i>").addClass("fa fa-retweet").attr('aria-hidden', "true"))
           .append($("<i>").addClass("fa fa-heart").attr('aria-hidden', "true"))
-          )
+          );
   $tweet.append($footer);
   return $tweet;
+}
+
+//Hover state
+function hoverstate(){
+  $("article.tweet").hover(function() {
+    $(this).addClass('hover');
+  }, function(){
+    $(this).removeClass('hover');
+  });
 }
 
 function renderTweets(data){
@@ -33,7 +42,7 @@ function renderTweets(data){
     $output = $('#tweets-container').prepend($tweet);
     $("time.timeago").timeago();
   });
-    hoverstate();
+  hoverstate();
 }
 
 //Loads all initial tweets
@@ -54,15 +63,6 @@ function flash(text) {
   }, 1000);
 }
 
-//Hover state
-function hoverstate(){
-  $("article.tweet").hover(function() {
-    $(this).addClass('hover');
-  }, function(){
-    $(this).removeClass('hover');
-  });
-}
-
 $(document).ready(function(){
   loadTweets();
 
@@ -72,9 +72,12 @@ $(document).ready(function(){
     event.preventDefault();
 
     let count = 140 - $('section form textarea').val().length;
-
-    if(count == 140){
-      setTimeout(flash("Please enter text!"), 2000);
+    let text = $('section form textarea').val();
+    console.log(text);
+    if(text.trim().length === 0){
+      flash("Please enter text!");
+    }else if(count === 140){
+      flash("Please enter text!");
     }else if(count < 0){
       flash("Your tweet is too long!");
     }else{
@@ -93,7 +96,7 @@ $(document).ready(function(){
   //functionality for hovering over the compose button
   $("#nav-bar .compose").hover(function() {
     $(this).addClass('button');
-  },function(){
+  }, function(){
     $(this).removeClass('button');
   });
 
@@ -104,6 +107,5 @@ $(document).ready(function(){
 
     $(".new-tweet form textarea").focus();
   });
-
 });
 
