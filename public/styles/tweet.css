@@ -43,6 +43,7 @@ article.tweet header span{
 article.tweet .tweettext{
   margin-top: 1em;
   padding: 10px 10px;
+  word-wrap: break-word;
 }
 
 article.tweet footer{

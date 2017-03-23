@@ -34,7 +34,6 @@ function renderTweets(data){
     $("time.timeago").timeago();
   });
     hoverstate();
-
 }
 
 //Loads all initial tweets
@@ -67,7 +66,8 @@ function hoverstate(){
 $(document).ready(function(){
   loadTweets();
 
-
+//check if count is too long, or empty and return appropriate warning. Else if everything is okay, post new tweet,
+//and clear text area and reset count to 140
   $('.new-tweet').on('submit', function(event) {
     event.preventDefault();
 
@@ -90,12 +90,14 @@ $(document).ready(function(){
     }
   });
 
+  //functionality for hovering over the compose button
   $("#nav-bar .compose").hover(function() {
     $(this).addClass('button');
   },function(){
     $(this).removeClass('button');
   });
 
+  //toggle for the compose new tweet input field, activated and deactivated by clicking compose
   $("#nav-bar .compose").click(function(e) {
     e.preventDefault();
     $(".new-tweet").slideToggle('click', false);
