@@ -85,6 +85,8 @@ $(document).ready(function(){
       }).done(function(responseText) {
         renderTweets([responseText]);
       });
+      $(".new-tweet form textarea").val('');
+      $(".new-tweet form .counter").text('140');
     }
   });
 
@@ -97,6 +99,7 @@ $(document).ready(function(){
   $("#nav-bar .compose").click(function(e) {
     e.preventDefault();
     $(".new-tweet").slideToggle('click', false);
+
     $(".new-tweet form textarea").focus();
   });
 
