@@ -88,8 +88,8 @@ $(document).ready(function(){
       }).done(function(responseText) {
         renderTweets([responseText]);
       });
-      $(".new-tweet form textarea").val('');
       $(".new-tweet form .counter").text('140');
+      $(".new-tweet form textarea").val('');
     }
   });
 

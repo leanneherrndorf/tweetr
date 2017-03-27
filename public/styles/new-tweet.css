@@ -16,6 +16,10 @@
   margin-top: 1em;
   padding: 10px 10px;
 }
+.new-tweet >form > input {
+  cursor: pointer;
+}
+
 .counter{
   float: right;
 }

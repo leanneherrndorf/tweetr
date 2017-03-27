@@ -48,4 +48,5 @@
 
 #nav-bar .compose.button {
   color: #00a087;
+  cursor: pointer;
 }
