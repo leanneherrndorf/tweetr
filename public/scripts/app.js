@@ -101,11 +101,21 @@ $(document).ready(function(){
   });
 
   //toggle for the compose new tweet input field, activated and deactivated by clicking compose
-  $("#nav-bar .compose").click(function(e) {
-    e.preventDefault();
+  $("#nav-bar .compose").click(function(event) {
+    event.preventDefault();
     $(".new-tweet").slideToggle('click', false);
 
     $(".new-tweet form textarea").focus();
   });
+
+
+  // //functionality for "liking" a tweet
+  // $("article.tweet .hover .social .fa fa-heart").click(function(event) {
+  //   $.ajax({
+  //     url: '/like',
+  //     method: 'PUT',
+
+  //   })
+  // }
 });
 
